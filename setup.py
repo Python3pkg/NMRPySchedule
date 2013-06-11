@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='NMRPySchedule',
     version='0.0.1',
-    packages=['nmrpyschedule', 'nmrpyschedule.format', 
+    packages=['nmrpyschedule', 
               'nmrpyschedule.generator'],
     license='MIT',
     author='Matt Fenwick',
