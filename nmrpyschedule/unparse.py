@@ -34,7 +34,7 @@ def wagner(points):
     
     The first point is (1,1), the second is (3,5), etc.
     '''
-    formattedPoints = map(_brukerPoint, sorted(points))
+    formattedPoints = list(map(_brukerPoint, sorted(points)))
     return ''.join(formattedPoints)
 
 
@@ -78,14 +78,14 @@ def toolkit(points):
     groupedPoints = {}
     for (delays, quad) in points:
         key, quadKey = tuple(delays), tuple(quad)
-        if not groupedPoints.has_key(key):
+        if key not in groupedPoints:
             groupedPoints[key] = set([])
         quads = groupedPoints[key]
         if quadKey in quads:
             raise ValueError(('duplicate transient in toolkit formatting', (delays, quad)))
         quads.add(quadKey)
     # 2. sort by time increments
-    sortedPoints = sort(groupedPoints, key=lambda (ts,_): ts)
+    sortedPoints = sort(groupedPoints, key=lambda ts__: ts__[0])
     
     chunks = []
     # 3. sort quadrature components

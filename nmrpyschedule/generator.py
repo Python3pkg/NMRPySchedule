@@ -11,7 +11,7 @@ def uniform(ranges):
     Generate a table of n-dimensional points containing all grid points within the given ranges.
     Includes both boundaries.
     '''
-    theNums = [range(low, high + 1) for (low, high) in ranges]
+    theNums = [list(range(low, high + 1)) for (low, high) in ranges]
     return itertools.product(*theNums)
 
 
@@ -49,7 +49,7 @@ def halton(ranges):
 
 
 def _distance(pt, origin):
-    zipped = zip(pt, origin)
+    zipped = list(zip(pt, origin))
     sumSquares = sum([abs(a - b) ** 2 for (a, b) in zipped])
     dist = math.sqrt(sumSquares)
     return dist
